@@ -1,0 +1,2 @@
+class CertExporterError(Exception):
+    pass
