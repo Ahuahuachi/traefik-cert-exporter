@@ -63,7 +63,7 @@ class Account(Model):
 class Domain(Model):
     """Represents a domain with a main domain and a list of sans domains."""
 
-    def __init__(self, main: str, sans: list[str]):
+    def __init__(self, main: str, sans: list[str] = None):
         self.main = main
         self.sans = sans
 
@@ -110,9 +110,16 @@ class Certificate(Model):
         )
 
     @property
-    def decoded_certificate(self) -> bytes:
+    def decoded_full_chain(self) -> bytes:
         """Certificate attribute decoded as bytes."""
         return base64.b64decode(self.certificate)
+
+    @property
+    def decoded_single_certs(self) -> tuple[bytes]:
+        """Tuple of bytes representing individual certificates in the decoded full chain"""
+        separator = b"-----BEGIN CERTIFICATE-----"
+        single_certs = self.decoded_full_chain.split(separator)
+        return tuple(separator + c for c in single_certs if c)
 
     @property
     def decoded_key(self) -> bytes:
@@ -121,6 +128,8 @@ class Certificate(Model):
 
 
 class Provider(Model):
+    """Represents a provider of certificates."""
+
     account: Account
     certificates: list[Certificate]
 
