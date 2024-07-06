@@ -17,14 +17,22 @@ def get_providers(file_path: str) -> list[Provider]:
 
     Returns:
         list[Provider]: A list of Provider objects extracted from the file contents.
+
+    Raises:
+        CertExporterError: If no providers with a valid account and certificates are found in the
+        storage file.
     """
     contents = get_file_content(file_path)
 
-    return [
+    providers = [
         Provider.from_dict(value)
         for value in contents.values()
         if all([value["Account"], value["Certificates"]])
     ]
+    if len(providers) == 0:
+        msg = "No providers with a valid account and certificates found in storage file"
+        raise CertExporterError(msg)
+    return providers
 
 
 def export_certificates(file_path: str, output_dir_path: str):

@@ -2,6 +2,7 @@
 
 import click
 
+from .exceptions import CertExporterError
 from .exporter import export_certificates
 
 CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
@@ -17,4 +18,7 @@ def export_certs(storage, output):
     STORAGE is the location where Traefik saves the ACME certificates.
     OUTPUT is the path to a directory where the certificate files will be exported to.
     """
-    export_certificates(storage, output)
+    try:
+        export_certificates(storage, output)
+    except CertExporterError as e:
+        raise click.UsageError(str(e)) from e
