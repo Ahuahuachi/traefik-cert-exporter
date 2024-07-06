@@ -5,7 +5,7 @@ import click
 from .exceptions import CertExporterError
 from .exporter import export_certificates
 
-CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
+CONTEXT_SETTINGS = {"help_option_names": ["-h", "--help"]}
 
 
 @click.command(context_settings=CONTEXT_SETTINGS)
