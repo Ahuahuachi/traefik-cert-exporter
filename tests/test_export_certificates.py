@@ -9,8 +9,16 @@ import pytest
 from src.traefik_cert_exporter import export_certificates
 
 
-@pytest.fixture
-def mock_file_path(tmpdir):
+@pytest.fixture(name="mock_file_path")
+def fixture_mock_file_path(tmpdir):
+    """Fixture that creates a temporary file with mock ACME data and returns its path.
+
+    Args:
+        tmpdir (py.path.local): The temporary directory object.
+
+    Returns:
+        pathlib.Path: The path to the temporary file.
+    """
     certs = b"-----BEGIN CERTIFICATE-----\nCERTIFICATE\n-----END CERTIFICATE-----\n" * 3
     key = b"-----BEGIN PRIVATE KEY-----\nKEY\n-----END PRIVATE KEY-----"
 
@@ -75,8 +83,8 @@ def mock_file_path(tmpdir):
     return path
 
 
-@pytest.fixture
-def tmp_output(tmpdir):
+@pytest.fixture(name="tmp_output")
+def fixture_tmp_output(tmpdir):
     """Generate a string representing the path to a temporary output directory.
 
     Args:

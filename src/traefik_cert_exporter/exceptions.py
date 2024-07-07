@@ -1,2 +1,5 @@
+"""Exceptions for Traefik certificate exporter."""
+
+
 class CertExporterError(Exception):
-    pass
+    """Base class for Traefik certificate exporter exceptions."""

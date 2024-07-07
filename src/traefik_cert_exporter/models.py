@@ -18,7 +18,7 @@ class Model(ABC):
         raise NotImplementedError("Subclass must implement __str__()")
 
 
-class Registration(Model):
+class Registration(Model):  # pylint: disable=too-few-public-methods
     """Represents a registration object with a body and a URI."""
 
     def __init__(self, body: dict, uri: str):
@@ -60,7 +60,7 @@ class Account(Model):
         )
 
 
-class Domain(Model):
+class Domain(Model):  # pylint: disable=too-few-public-methods
     """Represents a domain with a main domain and a list of sans domains."""
 
     def __init__(self, main: str, sans: list[str] = None):
