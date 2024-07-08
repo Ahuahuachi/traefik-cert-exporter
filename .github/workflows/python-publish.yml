@@ -18,7 +18,11 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    environment:
+      name: release
+      url: https://pypi.org/project/traefik-cert-exporter/
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v4
 
@@ -37,5 +41,3 @@ jobs:
 
       - name: Publish package
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
