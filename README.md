@@ -1,3 +1,13 @@
+![license](https://badgen.net/github/license/ahuahuachi/traefik-cert-exporter/)
+![releases](https://badgen.net/github/releases/ahuahuachi/traefik-cert-exporter/?icon=github)
+![stars](https://badgen.net/github/stars/ahuahuachi/traefik-cert-exporter/?icon=github)
+![docker stars](https://badgen.net/docker/stars/ahuahuachi/traefik-cert-exporter/?icon=docker)
+![docker pulls](https://badgen.net/docker/pulls/ahuahuachi/traefik-cert-exporter/?icon=docker)
+![docker size](https://badgen.net/docker/size/ahuahuachi/traefik-cert-exporter/?icon=docker)
+![pypi version](https://badgen.net/pypi/v/traefik-cert-exporter/?icon=pypi)
+![python versions](https://badgen.net/pypi/python/traefik-cert-exporter/?icon=pypi)
+![python downloads](https://badgen.net/pypi/dm/traefik-cert-exporter/?icon=pypi)
+
 # Traefik Cert Exporter
 
 CLI and python library to export [Traefik](https://traefik.io/traefik/) SSL certificates.
