@@ -68,4 +68,4 @@ def export_certificates(file_path: str, output_dir_path: str):
 
             for key, value in file_mapping.items():
                 with open(os.path.join(path, f"{key}.pem"), "wb") as f:
-                    f.write(value)
+                    f.write(value.strip())
